@@ -1,0 +1,7 @@
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	pp = stash pop
+	chp = cherry-pick
+	lg = log --color --graph --abbrev-commit --stat
