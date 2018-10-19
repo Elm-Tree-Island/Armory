@@ -42,3 +42,67 @@
 
 这两种电话面试的（反）模式是相互联系的。如果你只问候选人知道的东西，你对他们的能力的看法会非常狭隘。也会在之后做电话面试事后分析时，让自己深陷困境。
 
+
+
+## Acid测试(Acid Tests)
+
+> In an effort to make life simpler for phone screeners, I've put together this list of Five Essential Questions that you need to ask during an SDE screen. They won't guarantee that your candidate will be great, but they will help eliminate a huge number of candidates who are slipping through our process today. 
+
+为了让电话面试更简单，我把面试软件开发工程师时五项必问的问题裂了出来。这些问题虽然不能保证筛选出的候选人都很优秀，但是却可以帮助我们筛掉大量想蒙混过关的候选人。
+
+> These five areas are litmus tests -- very good ones. I've chosen them based on the following criteria: 
+
+这五个方面是整体看法，非常好。我按照以下标准选择了它们。
+
+> 1) They're universal - every programmer needs to know them, regardless of experience, so you can use them in all SDE phone screens, from college hires through 30-year veterans. 
+>
+> 2) They're quick - they're areas that you can probe very quickly, without eating too much into your phone-screen time. Each area can be assessed with 1 to 5 minutes of "weeder questions", and each area has almost unlimited weeder questions to choose from. 
+>
+> 3) They're predictors - there are certain common "SDE profiles" that are easy to spot because they tend to fail (and I mean really fail) in one or more of these five areas. So the areas are amazingly good at weeding out bad candidates. 
+
+1）通用的 —— 每个程序员都需要了解它们，从校园招聘到社招30岁的老员工，无论经验如何，这样你就可以在所有的SDE电话面试中使用它们。
+
+2）快速的 —— 不需要占用太多电话面试时间，你可以快速探测。每个方面可以利用1到5分钟的“除草问题”进行评估，而每个方面又有几乎无限的除草问题可供选择。
+
+3）可预测的 —— 有些常见的“SDE剖面”可以很容易被发现，因为这些很容易在五个方面问题中的一个或多个问题中失败。所以，这些方面可以非常好的剔除掉不良候选人。
+
+> You have to probe all five areas; you can't skip any of them. Each area is a proxy for a huge body of knowledge, and failing it very likely means failing the interviews, even though the candidate did fine in the other areas. 
+
+你需要探查全部五个方面，不可跳过。因为每个领域都包含大量的知识，所以，即便是候选人在其他方面做的不错，但也可能意味着会面试失败。
+
+> Without further ado, here they are: The Five Essential Questions for the first phone-screen with an SDE candidate: 
+
+闲言少叙，这就是电话面试软件开发工程师候选人的五项基本问题：
+
+> 1) Coding. The candidate has to write some simple code, with correct syntax, in C, C++, or Java.
+> 2) OO design. The candidate has to define basic OO concepts, and come up with classes to model a
+> simple problem.
+> 3) Scripting and regexes. The candidate has to describe how to find the phone numbers in 50,000
+> HTML pages.
+> 4) Data structures. The candidate has to demonstrate basic knowledge of the most common data
+> structures.
+> 5) Bits and bytes. The candidate has to answer simple questions about bits, bytes, and binary
+> numbers.
+
+1）写代码：候选人需要用C, C++或Java写一些简单的语法正确的代码；
+
+2）面向对象设计：候选人需说明面向对象的基本概念，并能够针对某个简单问题，使用类建模。
+
+3）脚本和表达式：例如请候选人描述出如何从50000个HTML页面中，找出所有电话号码；
+
+4）数据结构：候选人需展示常见数据结构的基本知识；
+
+5）比特&字节：候选人需回答一些关于位、字节和二进制数运算的基本问题；
+
+>what I'm looking for here is a total vacuum in one of these areas. It's OK if they
+>struggle a little and then figure it out. It's OK if they need some minor hints or prompting. I don't mind
+>if they're rusty or slow. What you're looking for is candidates who are utterly clueless, or horribly
+>confused, about the area in question.
+
+> For example, you may find a candidate who decides that a Vehicle class should be a subclass of ParkingGarage, since garages contain cars. This is just busted, and it's un-fixable in any reasonable amount of training time. 
+
+> Or a candidate might decide, when asked to search for phone numbers in a bunch of text files, to write a 2000-line C++ program, at which point you discover they've never heard of "grep", or at least never used it. 
+
+> When a candidate is totally incompetent in one of these Big Five areas, the chances are very high that they'll bomb horribly when presented with our typical interview questions. Last week I interviewed an SDE-2 candidate who made both of the mistakes above (a vehicle inheriting from garage, and the 2000-line C++ grep implementation.) He was by no means unusual, even for the past month. We've been bringing in many totally unqualified candidates. 
+
+> The rest of this document describes each area in more detail, and gives example questions, and solutions. 
