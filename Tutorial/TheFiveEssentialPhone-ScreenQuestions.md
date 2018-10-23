@@ -99,10 +99,44 @@
 >if they're rusty or slow. What you're looking for is candidates who are utterly clueless, or horribly
 >confused, about the area in question.
 
+我寻找的是在这个领域完全空白的候选人。如果他们挣扎一下然后能够解决是可以的，或者需要一点提示或建议才能解决也是可以的。我不介意他们愚钝或者速度慢。你需要发现的是那些无所适从，或者完全不清楚这些问题的那些候选人。
+
 > For example, you may find a candidate who decides that a Vehicle class should be a subclass of ParkingGarage, since garages contain cars. This is just busted, and it's un-fixable in any reasonable amount of training time. 
+
+例如，你会遇到一些候选人，将汽车类作为停车场的子类，因为停车场包含汽车。这就是问题，无论花多少合理的训练时间都无法解决。
 
 > Or a candidate might decide, when asked to search for phone numbers in a bunch of text files, to write a 2000-line C++ program, at which point you discover they've never heard of "grep", or at least never used it. 
 
+或者当候选人被问到在一堆文本文件中搜索电话号码时，他决定写一段2000行的C++程序，从这一点上，也告诉你，他们从来没有听过“grep”或者至少从来没使用过。
+
 > When a candidate is totally incompetent in one of these Big Five areas, the chances are very high that they'll bomb horribly when presented with our typical interview questions. Last week I interviewed an SDE-2 candidate who made both of the mistakes above (a vehicle inheriting from garage, and the 2000-line C++ grep implementation.) He was by no means unusual, even for the past month. We've been bringing in many totally unqualified candidates. 
 
+或者当发现一个候选人在这5个关键方面中的任何一个都无能为力，那么他们在面对常规面试问题时，成功的几率也十分渺茫。上周我面试了一个犯了上面两种错误（汽车继承自车库，写2000行grep代码）的SDE-2候选人，在过去一个月中，他并不特别，我们引入了太多不合格的候选人。
+
 > The rest of this document describes each area in more detail, and gives example questions, and solutions. 
+
+下面的文章中，会详细介绍每个方面，给出一些示例问题和解答。
+
+
+
+## 一、 编码
+
+> The candidate has to write some code. Give them a coding problem that requires writing a short, straightforward function. They can write it in whatever language they like, as long as they don't just call a library function that does it for them. 
+
+候选人必须写代码。给出一个问题，书写一个简短的函数。可以自选书写语言，只要不直接调用系统库函数来帮他们完成就可以。
+
+> It should be a trivial problem, one that even a slow candidate can answer in 5 minutes or less. 
+
+这个问题应该是个很小的问题，即便是一个愚钝的候选人，也可以在5分钟或更少时间都能给出答案。
+
+> (If the candidate seems insulted by the thought of having to get their hands dirty with a trivial coding question, after all their years of experience, patents, etc., tell them it's required procedure and ask them to humor you. If they refuse, tell them we only interview people who can demonstrate coding skills over the phone, thank them for their time, and end the call.) 
+
+（如果候选人按照他们自己多年的经验和专利能力，觉得问题太简单，不想做这些简单的尝试性问题，你可以告诉他们这些是流程所需，请他们理解。如果他们还是拒绝，则告知他们我们只会面试可以通过电话面试来完成编码的候选人，感谢他们的所花的时间，并挂断电话）
+
+> Give them a few minutes to write and hand-simulate the code. Tell them they need to make it syntactically correct and complete. Make them read the code to you over the phone. Copy down what they read back. Put it into your writeup. If they're sloppy, or don't want to give you exact details, give them one more chance to correct it, and then go with Not Inclined. 
+
+
+
+> (Note added 10/6/04) -- another good approach being used by many teams is to give the candidate "homework". E.g. you can give them an hour to solve some coding problem (harder than the ones below) and email the solution to you. Works like a charm. Definitely preferable to reading code over the phone. 
+
+> Anyway, here are some examples. I've given solutions in Java, mostly. I've gone back and forth on accepting solutions in other languages (e.g. Ruby, Perl, Python), and I've decided that candidates need to be able to code their answers in C, C++ or Java. It's wonderful if they know other languages, and in fact those who do tend to do a lot better overall. But to be an Amazon SDE, you need to prove you can do C++ or Java first. 
