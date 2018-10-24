@@ -131,12 +131,209 @@
 
 > (If the candidate seems insulted by the thought of having to get their hands dirty with a trivial coding question, after all their years of experience, patents, etc., tell them it's required procedure and ask them to humor you. If they refuse, tell them we only interview people who can demonstrate coding skills over the phone, thank them for their time, and end the call.) 
 
-（如果候选人按照他们自己多年的经验和专利能力，觉得问题太简单，不想做这些简单的尝试性问题，你可以告诉他们这些是流程所需，请他们理解。如果他们还是拒绝，则告知他们我们只会面试可以通过电话面试来完成编码的候选人，感谢他们的所花的时间，并挂断电话）
+（如果候选人根据他们自己多年的经验和能力，觉得问题太简单，不想做这些简单的尝试性问题，你可以告诉他们这些是流程所需，请他们理解。如果他们还是拒绝，则告知他们我们只会面试可以通过电话面试来完成编码的候选人，感谢他们的所花的时间，并挂断电话）
 
 > Give them a few minutes to write and hand-simulate the code. Tell them they need to make it syntactically correct and complete. Make them read the code to you over the phone. Copy down what they read back. Put it into your writeup. If they're sloppy, or don't want to give you exact details, give them one more chance to correct it, and then go with Not Inclined. 
 
-
+给他们几分钟书写和手动模拟代码，告诉他们写的代码需要语法正确且完整。让他们在电话中将代码读给你，你来记录到面试记录中，如果模糊不清，请他们详细的讲述细节并再给一次机会更正模糊的地方，然后继续进行。
 
 > (Note added 10/6/04) -- another good approach being used by many teams is to give the candidate "homework". E.g. you can give them an hour to solve some coding problem (harder than the ones below) and email the solution to you. Works like a charm. Definitely preferable to reading code over the phone. 
 
+(注解添加于 10/6/04) -- 另一种比较好，也被很多开发组使用的方式是给候选人留家庭作业。例如，可以给他们一小时时间来解决一些编码难题（要难于下面这些问题），然后请他们把解决方案通过电子邮件发送过来。这种方式更酷，也比通过电话来朗读代码更可取。
+
 > Anyway, here are some examples. I've given solutions in Java, mostly. I've gone back and forth on accepting solutions in other languages (e.g. Ruby, Perl, Python), and I've decided that candidates need to be able to code their answers in C, C++ or Java. It's wonderful if they know other languages, and in fact those who do tend to do a lot better overall. But to be an Amazon SDE, you need to prove you can do C++ or Java first. 
+
+
+
+**Example 1**: Write a function to reverse a string. 
+
+Example Java code: 
+
+```objective-c
+public static String reverse ( String s ) {
+    int length = s.length(), last = length - 1;
+    char[] chars = s.toCharArray();
+    for ( int i = 0; i < length/2; i++ ) {
+        char c = chars[i];
+        chars[i] = chars[last - i];
+        chars[last - i] = c;
+    }
+    return new String(chars);
+}
+```
+
+> Example output for "Madam, I'm Adam": madA m'I ,madaM 
+
+
+
+**Example 2**: Write function to compute Nth fibonacci number: 
+
+Java and C/C++: 
+
+```objective-c
+static long fib(int n) {
+    return n <= 1 ? n : fib(n-1) + fib(n-2);
+}
+```
+
+
+
+(Java Test Harness) 
+
+```java
+public static void main ( String[] args ) {
+    for ( int i = 0; i < 10; i++ ) {
+        System.out.print ( fib(i) + ", " );
+    }
+    System.out.println ( fib(10) );
+}
+```
+
+
+
+(C/C++ Test Harness) 
+
+```c++
+main () {
+	for ( int i = 0; i < 10; i++ ) {
+		printf ( "%d, ", fib(i) );
+	}
+    printf ( "%d\n", fib(10) );
+}
+```
+
+> Test harness output:
+>  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+
+
+
+**Example 3**: Print out the grade-school multiplication table up to 12x12
+
+Java: (similar for C/C++) 
+
+```java
+public static void multTables ( int max ) {
+	for ( int i = 1; i <= max; i++ ) {
+        for ( int j = 1; j <= max; j++ ) {
+            System.out.print ( String.format ( "%4d", j * i ));
+        }
+        System.out.println();
+    }
+}
+```
+
+> Example output:
+>
+> 1	2	3	4 	5 	6 	7	8	9	10	11	12
+> 2	4	6	8	10	12	14	16	18	20	22	24
+> 3	6	9	12	15	18	21	24	27	30	33	36
+> 4 	8	12	16	20	24	28	32	36	40	44	48
+> 5	10	15	20	25	30	35	40	45	50	55	60
+> 6	12	18	24	30	36	42	48	54	60	66	72
+> 7	14	21	28	35	42	49	56	63	70	77	84
+> 8	16	24	32	40	48	56	64	72	80	88	96
+> 9	18	27	36	45	54	63	72	81	90	99	108
+> 10	20	30	40	50	60	70	80	90	100	110	120
+> 11	22	33	44	55	66	77	88	99	110	121	132
+> 12	24	36	48	60	72	84	96	108	120	132	144
+
+
+
+**Example 4**: Write a function that sums up integers from a text file, one int per line.
+
+ Java: 
+
+```java
+public static void sumFile ( String name ) {
+    try {
+        int total = 0;
+        BufferedReader in = new BufferedReader ( new FileReader ( name ));
+        for ( String s = in.readLine(); s != null; s = in.readLine() ) {
+            total += Integer.parseInt ( s );
+        }
+        System.out.println ( total );
+        in.close();
+    } catch ( Exception xc ) {
+        xc.printStackTrace();
+    }
+}     
+```
+
+
+
+**Example 5**: Write function to print the odd numbers from 1 to 99. 
+
+C/C++: 
+
+```c++
+void printOdds() {
+    for (int i = 1; i < 100; i += 2) {
+        printf ("%d\n", i); // or cout << i << endl;
+    }
+}
+```
+
+Java: 
+
+```java
+public static void printOdds() {
+    for (int i = 1; i < 100; i += 2) {
+        System.out.println ( i );
+    }
+} 
+```
+
+
+
+**Example 6**: Find the largest int value in an int array.
+
+ Java: 
+
+```java
+public static int largest ( int[] input ) {
+    int max = Integer.MIN_VALUE;
+    for ( int i = 0; i < input.length; i++ ) {
+        if ( input[i] > max ) max = input[i];
+    }
+    return max;
+}
+```
+
+
+
+**Example 7**: Format an RGB value (three 1-byte numbers) as a 6-digit hexadecimal string.
+
+ Java: 
+
+```java
+public String formatRGB ( int r, int g, int b ) {
+    return (toHex(r) + toHex(g) + toHex(b)).toUpperCase();
+} 
+    
+public String toHex ( int c ) {
+    String s = Integer.toHexString ( c );
+    return ( s.length() == 1 ) ? "0" + s : s;
+} 
+```
+
+Or in Java 1.5: 
+
+```java
+public String formatRGB ( int r, int g, int b ) {
+	return String.format ( "%02X%02X%02X", r, g, b );
+}
+```
+
+Example output for (255, 0, 128):
+
+You can ask any question you like; doesn't have to be one of the ones above. They're just examples. 
+
+Some properties of a good weeder phone-screen coding question are: 
+
+1. It's simple. It has to be something that you should be able to solve, trivially, in about 2 minutes or less. Not too tricky. Basic stuff. 
+2. You've solved it. You shouldn't ask a question unless you've solved it yourself recently, so you know it's a reasonable question, and you can evaluate their answer to it. You should consider coding it yourself during the time you've given them to do it. 
+3. It has loops or recursion. Recursion is actually preferable. Being able to reason recursively or inductively is important for many areas of computing, including using heirarchical data representations (e.g. XML), distributed computing, searching, and sorting. Many candidates simply can't think recursively, and this often goes undetected until interview-time. Try to find out at compile-time! Er, phone-screen time, that is. 
+4. It has formatted output. This is a basic skill, useful for debugging, simple report generation, and lots of other things. "printf" is a universal standard; it exists in C, C++, Java, Perl, Ruby, Python, and virtually every other mainstream language, at least as a library call. Like file I/O, it's a good indicator as to whether the candidate has written "real" code before. 
+5. It has text-file I/O. Candidates who have worked in frameworks for too long often become unable to function as programmers outside that framework. Not being able to do simple file I/O is a common indicator that they've grown overly dependent on a particular framework. 
+
+It's hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know. 
