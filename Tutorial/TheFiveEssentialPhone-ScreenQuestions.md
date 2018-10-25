@@ -143,9 +143,9 @@
 
 > Anyway, here are some examples. I've given solutions in Java, mostly. I've gone back and forth on accepting solutions in other languages (e.g. Ruby, Perl, Python), and I've decided that candidates need to be able to code their answers in C, C++ or Java. It's wonderful if they know other languages, and in fact those who do tend to do a lot better overall. But to be an Amazon SDE, you need to prove you can do C++ or Java first. 
 
+不管怎样，这有些示例，大多我都已经给出了Java的实现方案。我反复看了其他语言（例如：Ruby、Perl、Python）可接受的解决方案，我认为候选人需要能够使用C、C++或Java实现出他们的答案，如果他们知道其他语言，而且事实上如果他们还能用其他语言来实现，总体上他们会做的更好。但是，如果想成为亚马逊的软件开发工程师，你首先需要会用C++或Java。
 
-
-**Example 1**: Write a function to reverse a string. 
+**Example 1**: Write a function to reverse a string. （翻转字符串）
 
 Example Java code: 
 
@@ -166,7 +166,7 @@ public static String reverse ( String s ) {
 
 
 
-**Example 2**: Write function to compute Nth fibonacci number: 
+**Example 2**: Write function to compute Nth fibonacci number: （打印第N个斐波拉契数列的值）
 
 Java and C/C++: 
 
@@ -207,7 +207,7 @@ main () {
 
 
 
-**Example 3**: Print out the grade-school multiplication table up to 12x12
+**Example 3**: Print out the grade-school multiplication table up to 12x12（12x12的乘法表）
 
 Java: (similar for C/C++) 
 
@@ -239,7 +239,7 @@ public static void multTables ( int max ) {
 
 
 
-**Example 4**: Write a function that sums up integers from a text file, one int per line.
+**Example 4**: Write a function that sums up integers from a text file, one int per line.（计算文件中每行的数的和）
 
  Java: 
 
@@ -261,7 +261,7 @@ public static void sumFile ( String name ) {
 
 
 
-**Example 5**: Write function to print the odd numbers from 1 to 99. 
+**Example 5**: Write function to print the odd numbers from 1 to 99. （打印1-99的奇数）
 
 C/C++: 
 
@@ -285,7 +285,7 @@ public static void printOdds() {
 
 
 
-**Example 6**: Find the largest int value in an int array.
+**Example 6**: Find the largest int value in an int array.（找到数组中最大整数值）
 
  Java: 
 
@@ -301,7 +301,7 @@ public static int largest ( int[] input ) {
 
 
 
-**Example 7**: Format an RGB value (three 1-byte numbers) as a 6-digit hexadecimal string.
+**Example 7**: Format an RGB value (three 1-byte numbers) as a 6-digit hexadecimal string. （将三字节的RGB数值，转化为6位十六进制字符串）
 
  Java: 
 
@@ -324,16 +324,30 @@ public String formatRGB ( int r, int g, int b ) {
 }
 ```
 
-Example output for (255, 0, 128):
+> Example output for (255, 0, 128):
 
-You can ask any question you like; doesn't have to be one of the ones above. They're just examples. 
 
-Some properties of a good weeder phone-screen coding question are: 
 
-1. It's simple. It has to be something that you should be able to solve, trivially, in about 2 minutes or less. Not too tricky. Basic stuff. 
-2. You've solved it. You shouldn't ask a question unless you've solved it yourself recently, so you know it's a reasonable question, and you can evaluate their answer to it. You should consider coding it yourself during the time you've given them to do it. 
-3. It has loops or recursion. Recursion is actually preferable. Being able to reason recursively or inductively is important for many areas of computing, including using heirarchical data representations (e.g. XML), distributed computing, searching, and sorting. Many candidates simply can't think recursively, and this often goes undetected until interview-time. Try to find out at compile-time! Er, phone-screen time, that is. 
-4. It has formatted output. This is a basic skill, useful for debugging, simple report generation, and lots of other things. "printf" is a universal standard; it exists in C, C++, Java, Perl, Ruby, Python, and virtually every other mainstream language, at least as a library call. Like file I/O, it's a good indicator as to whether the candidate has written "real" code before. 
-5. It has text-file I/O. Candidates who have worked in frameworks for too long often become unable to function as programmers outside that framework. Not being able to do simple file I/O is a common indicator that they've grown overly dependent on a particular framework. 
+> You can ask any question you like; doesn't have to be one of the ones above. They're just examples. 
 
-It's hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know. 
+除了上述问题外，你可以问任何你想问的问题，这些只是例子。
+
+> Some properties of a good weeder phone-screen coding question are: 
+>
+> 1. It's simple. It has to be something that you should be able to solve, trivially, in about 2 minutes or less. Not too tricky. Basic stuff. 
+> 2. You've solved it. You shouldn't ask a question unless you've solved it yourself recently, so you know it's a reasonable question, and you can evaluate their answer to it. You should consider coding it yourself during the time you've given them to do it. 
+> 3. It has loops or recursion. Recursion is actually preferable. Being able to reason recursively or inductively is important for many areas of computing, including using heirarchical data representations (e.g. XML), distributed computing, searching, and sorting. Many candidates simply can't think recursively, and this often goes undetected until interview-time. Try to find out at compile-time! Er, phone-screen time, that is. 
+> 4. It has formatted output. This is a basic skill, useful for debugging, simple report generation, and lots of other things. "printf" is a universal standard; it exists in C, C++, Java, Perl, Ruby, Python, and virtually every other mainstream language, at least as a library call. Like file I/O, it's a good indicator as to whether the candidate has written "real" code before. 
+> 5. It has text-file I/O. Candidates who have worked in frameworks for too long often become unable to function as programmers outside that framework. Not being able to do simple file I/O is a common indicator that they've grown overly dependent on a particular framework. 
+
+一个好的电话面试筛选问题有以下特性：
+
+1. 简单。2分钟甚至更少时间能够解答出来，不刁钻，而且是基本的问题；
+2. 你自己能够解答。你问的问题需要是你自己最近已经解答过的问题，因此你知道问题是合理的，而且你可以评估候选人给出的答案怎么样，在让他们写出来的时间内，你自己也要尝试着去实现写出来。
+3. 有循环和递归。递归更好，能够递归推理或归纳推理对于计算的许多领域都很重要，包括使用层次数据表示(例如XML)、分布式计算，搜索和排序。许多求职者根本无法进行递归思考，而这往往在面试时才被发现。尝试模拟编译时才发现问题，恰好还是电话面试时间。
+4. 格式化输出。这是基本的技能，对于调试代码，简单报告生成和其他很多东西都有用。“printf”就是个通用标准；它存在于C、C++、Java、Perl、Ruby、Python和几乎其他主流语言中，至少是作为库调用。像文件I/O操作就可以很好的表明候选人是不是真的写过代码。
+5. 有文本文件IO。如果候选人长期在开发Framework，会变得在Framework之外不清楚应该如何工作。不能够操作简单的文件IO往往表明他们过度依赖于特定框架。
+
+> It's hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know. 
+
+一个简短的“除杂草”问题很难能够包含所有的方面。如果你认为一个问题能够包含这些所有的方面，请告诉我。
