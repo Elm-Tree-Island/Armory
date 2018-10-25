@@ -42,3 +42,312 @@
 
 这两种电话面试的（反）模式是相互联系的。如果你只问候选人知道的东西，你对他们的能力的看法会非常狭隘。也会在之后做电话面试事后分析时，让自己深陷困境。
 
+
+
+## Acid测试(Acid Tests)
+
+> In an effort to make life simpler for phone screeners, I've put together this list of Five Essential Questions that you need to ask during an SDE screen. They won't guarantee that your candidate will be great, but they will help eliminate a huge number of candidates who are slipping through our process today. 
+
+为了让电话面试更简单，我把面试软件开发工程师时五项必问的问题裂了出来。这些问题虽然不能保证筛选出的候选人都很优秀，但是却可以帮助我们筛掉大量想蒙混过关的候选人。
+
+> These five areas are litmus tests -- very good ones. I've chosen them based on the following criteria: 
+
+这五个方面是整体看法，非常好。我按照以下标准选择了它们。
+
+> 1) They're universal - every programmer needs to know them, regardless of experience, so you can use them in all SDE phone screens, from college hires through 30-year veterans. 
+>
+> 2) They're quick - they're areas that you can probe very quickly, without eating too much into your phone-screen time. Each area can be assessed with 1 to 5 minutes of "weeder questions", and each area has almost unlimited weeder questions to choose from. 
+>
+> 3) They're predictors - there are certain common "SDE profiles" that are easy to spot because they tend to fail (and I mean really fail) in one or more of these five areas. So the areas are amazingly good at weeding out bad candidates. 
+
+1）通用的 —— 每个程序员都需要了解它们，从校园招聘到社招30岁的老员工，无论经验如何，这样你就可以在所有的SDE电话面试中使用它们。
+
+2）快速的 —— 不需要占用太多电话面试时间，你可以快速探测。每个方面可以利用1到5分钟的“除草问题”进行评估，而每个方面又有几乎无限的除草问题可供选择。
+
+3）可预测的 —— 有些常见的“SDE剖面”可以很容易被发现，因为这些很容易在五个方面问题中的一个或多个问题中失败。所以，这些方面可以非常好的剔除掉不良候选人。
+
+> You have to probe all five areas; you can't skip any of them. Each area is a proxy for a huge body of knowledge, and failing it very likely means failing the interviews, even though the candidate did fine in the other areas. 
+
+你需要探查全部五个方面，不可跳过。因为每个领域都包含大量的知识，所以，即便是候选人在其他方面做的不错，但也可能意味着会面试失败。
+
+> Without further ado, here they are: The Five Essential Questions for the first phone-screen with an SDE candidate: 
+
+闲言少叙，这就是电话面试软件开发工程师候选人的五项基本问题：
+
+> 1) Coding. The candidate has to write some simple code, with correct syntax, in C, C++, or Java.
+> 2) OO design. The candidate has to define basic OO concepts, and come up with classes to model a
+> simple problem.
+> 3) Scripting and regexes. The candidate has to describe how to find the phone numbers in 50,000
+> HTML pages.
+> 4) Data structures. The candidate has to demonstrate basic knowledge of the most common data
+> structures.
+> 5) Bits and bytes. The candidate has to answer simple questions about bits, bytes, and binary
+> numbers.
+
+1）写代码：候选人需要用C, C++或Java写一些简单的语法正确的代码；
+
+2）面向对象设计：候选人需说明面向对象的基本概念，并能够针对某个简单问题，使用类建模。
+
+3）脚本和表达式：例如请候选人描述出如何从50000个HTML页面中，找出所有电话号码；
+
+4）数据结构：候选人需展示常见数据结构的基本知识；
+
+5）比特&字节：候选人需回答一些关于位、字节和二进制数运算的基本问题；
+
+>what I'm looking for here is a total vacuum in one of these areas. It's OK if they
+>struggle a little and then figure it out. It's OK if they need some minor hints or prompting. I don't mind
+>if they're rusty or slow. What you're looking for is candidates who are utterly clueless, or horribly
+>confused, about the area in question.
+
+我寻找的是在这个领域完全空白的候选人。如果他们挣扎一下然后能够解决是可以的，或者需要一点提示或建议才能解决也是可以的。我不介意他们愚钝或者速度慢。你需要发现的是那些无所适从，或者完全不清楚这些问题的那些候选人。
+
+> For example, you may find a candidate who decides that a Vehicle class should be a subclass of ParkingGarage, since garages contain cars. This is just busted, and it's un-fixable in any reasonable amount of training time. 
+
+例如，你会遇到一些候选人，将汽车类作为停车场的子类，因为停车场包含汽车。这就是问题，无论花多少合理的训练时间都无法解决。
+
+> Or a candidate might decide, when asked to search for phone numbers in a bunch of text files, to write a 2000-line C++ program, at which point you discover they've never heard of "grep", or at least never used it. 
+
+或者当候选人被问到在一堆文本文件中搜索电话号码时，他决定写一段2000行的C++程序，从这一点上，也告诉你，他们从来没有听过“grep”或者至少从来没使用过。
+
+> When a candidate is totally incompetent in one of these Big Five areas, the chances are very high that they'll bomb horribly when presented with our typical interview questions. Last week I interviewed an SDE-2 candidate who made both of the mistakes above (a vehicle inheriting from garage, and the 2000-line C++ grep implementation.) He was by no means unusual, even for the past month. We've been bringing in many totally unqualified candidates. 
+
+或者当发现一个候选人在这5个关键方面中的任何一个都无能为力，那么他们在面对常规面试问题时，成功的几率也十分渺茫。上周我面试了一个犯了上面两种错误（汽车继承自车库，写2000行grep代码）的SDE-2候选人，在过去一个月中，他并不特别，我们引入了太多不合格的候选人。
+
+> The rest of this document describes each area in more detail, and gives example questions, and solutions. 
+
+下面的文章中，会详细介绍每个方面，给出一些示例问题和解答。
+
+
+
+## 一、 编码
+
+> The candidate has to write some code. Give them a coding problem that requires writing a short, straightforward function. They can write it in whatever language they like, as long as they don't just call a library function that does it for them. 
+
+候选人必须写代码。给出一个问题，书写一个简短的函数。可以自选书写语言，只要不直接调用系统库函数来帮他们完成就可以。
+
+> It should be a trivial problem, one that even a slow candidate can answer in 5 minutes or less. 
+
+这个问题应该是个很小的问题，即便是一个愚钝的候选人，也可以在5分钟或更少时间都能给出答案。
+
+> (If the candidate seems insulted by the thought of having to get their hands dirty with a trivial coding question, after all their years of experience, patents, etc., tell them it's required procedure and ask them to humor you. If they refuse, tell them we only interview people who can demonstrate coding skills over the phone, thank them for their time, and end the call.) 
+
+（如果候选人根据他们自己多年的经验和能力，觉得问题太简单，不想做这些简单的尝试性问题，你可以告诉他们这些是流程所需，请他们理解。如果他们还是拒绝，则告知他们我们只会面试可以通过电话面试来完成编码的候选人，感谢他们的所花的时间，并挂断电话）
+
+> Give them a few minutes to write and hand-simulate the code. Tell them they need to make it syntactically correct and complete. Make them read the code to you over the phone. Copy down what they read back. Put it into your writeup. If they're sloppy, or don't want to give you exact details, give them one more chance to correct it, and then go with Not Inclined. 
+
+给他们几分钟书写和手动模拟代码，告诉他们写的代码需要语法正确且完整。让他们在电话中将代码读给你，你来记录到面试记录中，如果模糊不清，请他们详细的讲述细节并再给一次机会更正模糊的地方，然后继续进行。
+
+> (Note added 10/6/04) -- another good approach being used by many teams is to give the candidate "homework". E.g. you can give them an hour to solve some coding problem (harder than the ones below) and email the solution to you. Works like a charm. Definitely preferable to reading code over the phone. 
+
+(注解添加于 10/6/04) -- 另一种比较好，也被很多开发组使用的方式是给候选人留家庭作业。例如，可以给他们一小时时间来解决一些编码难题（要难于下面这些问题），然后请他们把解决方案通过电子邮件发送过来。这种方式更酷，也比通过电话来朗读代码更可取。
+
+> Anyway, here are some examples. I've given solutions in Java, mostly. I've gone back and forth on accepting solutions in other languages (e.g. Ruby, Perl, Python), and I've decided that candidates need to be able to code their answers in C, C++ or Java. It's wonderful if they know other languages, and in fact those who do tend to do a lot better overall. But to be an Amazon SDE, you need to prove you can do C++ or Java first. 
+
+不管怎样，这有些示例，大多我都已经给出了Java的实现方案。我反复看了其他语言（例如：Ruby、Perl、Python）可接受的解决方案，我认为候选人需要能够使用C、C++或Java实现出他们的答案，如果他们知道其他语言，而且事实上如果他们还能用其他语言来实现，总体上他们会做的更好。但是，如果想成为亚马逊的软件开发工程师，你首先需要会用C++或Java。
+
+**Example 1**: Write a function to reverse a string. （翻转字符串）
+
+Example Java code: 
+
+```objective-c
+public static String reverse ( String s ) {
+    int length = s.length(), last = length - 1;
+    char[] chars = s.toCharArray();
+    for ( int i = 0; i < length/2; i++ ) {
+        char c = chars[i];
+        chars[i] = chars[last - i];
+        chars[last - i] = c;
+    }
+    return new String(chars);
+}
+```
+
+> Example output for "Madam, I'm Adam": madA m'I ,madaM 
+
+
+
+**Example 2**: Write function to compute Nth fibonacci number: （打印第N个斐波拉契数列的值）
+
+Java and C/C++: 
+
+```objective-c
+static long fib(int n) {
+    return n <= 1 ? n : fib(n-1) + fib(n-2);
+}
+```
+
+
+
+(Java Test Harness) 
+
+```java
+public static void main ( String[] args ) {
+    for ( int i = 0; i < 10; i++ ) {
+        System.out.print ( fib(i) + ", " );
+    }
+    System.out.println ( fib(10) );
+}
+```
+
+
+
+(C/C++ Test Harness) 
+
+```c++
+main () {
+	for ( int i = 0; i < 10; i++ ) {
+		printf ( "%d, ", fib(i) );
+	}
+    printf ( "%d\n", fib(10) );
+}
+```
+
+> Test harness output:
+>  0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55
+
+
+
+**Example 3**: Print out the grade-school multiplication table up to 12x12（12x12的乘法表）
+
+Java: (similar for C/C++) 
+
+```java
+public static void multTables ( int max ) {
+	for ( int i = 1; i <= max; i++ ) {
+        for ( int j = 1; j <= max; j++ ) {
+            System.out.print ( String.format ( "%4d", j * i ));
+        }
+        System.out.println();
+    }
+}
+```
+
+> Example output:
+>
+> 1	2	3	4 	5 	6 	7	8	9	10	11	12
+> 2	4	6	8	10	12	14	16	18	20	22	24
+> 3	6	9	12	15	18	21	24	27	30	33	36
+> 4 	8	12	16	20	24	28	32	36	40	44	48
+> 5	10	15	20	25	30	35	40	45	50	55	60
+> 6	12	18	24	30	36	42	48	54	60	66	72
+> 7	14	21	28	35	42	49	56	63	70	77	84
+> 8	16	24	32	40	48	56	64	72	80	88	96
+> 9	18	27	36	45	54	63	72	81	90	99	108
+> 10	20	30	40	50	60	70	80	90	100	110	120
+> 11	22	33	44	55	66	77	88	99	110	121	132
+> 12	24	36	48	60	72	84	96	108	120	132	144
+
+
+
+**Example 4**: Write a function that sums up integers from a text file, one int per line.（计算文件中每行的数的和）
+
+ Java: 
+
+```java
+public static void sumFile ( String name ) {
+    try {
+        int total = 0;
+        BufferedReader in = new BufferedReader ( new FileReader ( name ));
+        for ( String s = in.readLine(); s != null; s = in.readLine() ) {
+            total += Integer.parseInt ( s );
+        }
+        System.out.println ( total );
+        in.close();
+    } catch ( Exception xc ) {
+        xc.printStackTrace();
+    }
+}     
+```
+
+
+
+**Example 5**: Write function to print the odd numbers from 1 to 99. （打印1-99的奇数）
+
+C/C++: 
+
+```c++
+void printOdds() {
+    for (int i = 1; i < 100; i += 2) {
+        printf ("%d\n", i); // or cout << i << endl;
+    }
+}
+```
+
+Java: 
+
+```java
+public static void printOdds() {
+    for (int i = 1; i < 100; i += 2) {
+        System.out.println ( i );
+    }
+} 
+```
+
+
+
+**Example 6**: Find the largest int value in an int array.（找到数组中最大整数值）
+
+ Java: 
+
+```java
+public static int largest ( int[] input ) {
+    int max = Integer.MIN_VALUE;
+    for ( int i = 0; i < input.length; i++ ) {
+        if ( input[i] > max ) max = input[i];
+    }
+    return max;
+}
+```
+
+
+
+**Example 7**: Format an RGB value (three 1-byte numbers) as a 6-digit hexadecimal string. （将三字节的RGB数值，转化为6位十六进制字符串）
+
+ Java: 
+
+```java
+public String formatRGB ( int r, int g, int b ) {
+    return (toHex(r) + toHex(g) + toHex(b)).toUpperCase();
+} 
+    
+public String toHex ( int c ) {
+    String s = Integer.toHexString ( c );
+    return ( s.length() == 1 ) ? "0" + s : s;
+} 
+```
+
+Or in Java 1.5: 
+
+```java
+public String formatRGB ( int r, int g, int b ) {
+	return String.format ( "%02X%02X%02X", r, g, b );
+}
+```
+
+> Example output for (255, 0, 128):
+
+
+
+> You can ask any question you like; doesn't have to be one of the ones above. They're just examples. 
+
+除了上述问题外，你可以问任何你想问的问题，这些只是例子。
+
+> Some properties of a good weeder phone-screen coding question are: 
+>
+> 1. It's simple. It has to be something that you should be able to solve, trivially, in about 2 minutes or less. Not too tricky. Basic stuff. 
+> 2. You've solved it. You shouldn't ask a question unless you've solved it yourself recently, so you know it's a reasonable question, and you can evaluate their answer to it. You should consider coding it yourself during the time you've given them to do it. 
+> 3. It has loops or recursion. Recursion is actually preferable. Being able to reason recursively or inductively is important for many areas of computing, including using heirarchical data representations (e.g. XML), distributed computing, searching, and sorting. Many candidates simply can't think recursively, and this often goes undetected until interview-time. Try to find out at compile-time! Er, phone-screen time, that is. 
+> 4. It has formatted output. This is a basic skill, useful for debugging, simple report generation, and lots of other things. "printf" is a universal standard; it exists in C, C++, Java, Perl, Ruby, Python, and virtually every other mainstream language, at least as a library call. Like file I/O, it's a good indicator as to whether the candidate has written "real" code before. 
+> 5. It has text-file I/O. Candidates who have worked in frameworks for too long often become unable to function as programmers outside that framework. Not being able to do simple file I/O is a common indicator that they've grown overly dependent on a particular framework. 
+
+一个好的电话面试筛选问题有以下特性：
+
+1. 简单。2分钟甚至更少时间能够解答出来，不刁钻，而且是基本的问题；
+2. 你自己能够解答。你问的问题需要是你自己最近已经解答过的问题，因此你知道问题是合理的，而且你可以评估候选人给出的答案怎么样，在让他们写出来的时间内，你自己也要尝试着去实现写出来。
+3. 有循环和递归。递归更好，能够递归推理或归纳推理对于计算的许多领域都很重要，包括使用层次数据表示(例如XML)、分布式计算，搜索和排序。许多求职者根本无法进行递归思考，而这往往在面试时才被发现。尝试模拟编译时才发现问题，恰好还是电话面试时间。
+4. 格式化输出。这是基本的技能，对于调试代码，简单报告生成和其他很多东西都有用。“printf”就是个通用标准；它存在于C、C++、Java、Perl、Ruby、Python和几乎其他主流语言中，至少是作为库调用。像文件I/O操作就可以很好的表明候选人是不是真的写过代码。
+5. 有文本文件IO。如果候选人长期在开发Framework，会变得在Framework之外不清楚应该如何工作。不能够操作简单的文件IO往往表明他们过度依赖于特定框架。
+
+> It's hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know. 
+
+一个简短的“除杂草”问题很难能够包含所有的方面。如果你认为一个问题能够包含这些所有的方面，请告诉我。
