@@ -351,3 +351,129 @@ public String formatRGB ( int r, int g, int b ) {
 > It's hard to cover all these things and still be a short weeder question. If you think of a question that has all these properties, let me know. 
 
 一个简短的“除杂草”问题很难能够包含所有的方面。如果你认为一个问题能够包含这些所有的方面，请告诉我。
+
+
+
+## 二、面向对象编程
+
+> We shouldn't hire SDEs (arguably excepting college hires) who aren't at least somewhat proficient with OOP. I'm not claiming that OOP is good or bad; I'm just saying you have to know it, just like you have to know the things you can and can't do at an airport security checkpoint. 
+
+
+
+> Two reasons: 
+>
+> 1. OO has been popular/mainstream for more than 20 years. Virtually every programming language supports OOP in some way. You can't work on a big code base without running into it. 
+> 2. OO concepts are an important building block for creating good service interfaces. They represent a shared understanding and a common vocabulary that are sometimes useful when talking about architecture. 
+
+
+
+> So you have to ask candidates some OO stuff on the phone. 
+
+
+
+### 1. Terminology
+
+> The candidate should be able to give satisfactory definitions for a random selection of the following terms: 
+>
+> 1. class, object (and the difference between the two) 
+> 2. instantiation
+> 3. method (as opposed to, say, a C function)
+> 4. virtual method, pure virtual method 
+> 5. class/static method
+> 6. static/class initializer
+> 7. constructor
+> 8. destructor/finalizer
+> 9. superclass or base class
+> 10. subclass or derived class
+> 11. inheritance
+> 12. encapsulation
+> 13. multiple inheritance (and give an example)
+> 14. delegation/forwarding
+> 15. composition/aggregation
+> 16. abstract class
+> 17. interface/protocol (and different from abstract class)
+> 18. method overriding
+> 19. method overloading (and difference from overriding)
+> 20. polymorphism (without resorting to examples)
+> 21. is-a versus has-a relationships (with examples)
+> 22. method signatures (what's included in one)
+> 23. method visibility (e.g. public/private/other)
+
+
+
+> These are just the bare basics of OO. Candidates should know this stuff cold. It's not even a complete list; it's just off the top of my head. 
+
+
+
+> Again, I'm not advocating OOP, or saying anything about it, other than that it's ubiquitious so you have to know it. You can learn this stuff by reading a single book and writing a little code, so no SDE candidate (except maybe a brand-new college hire) can be excused for not knowing this stuff. 
+
+
+
+> I draw a distinction between "knows it" and "is smart enough to learn it." Normally I allow people through for interviews if they've got a gap in their knowledge, as long as I think they're smart enough to make it up on the job. 
+
+
+
+> But for these five areas, I expect candidates to know them. It's not just a matter of being smart enough to learn them. There's a certain amount of common sense involved; I can't imagine coming to interview at Amazon and not having brushed up on OOP, for example. But these areas are also so fundamental that they serve as real indicators of how the person will do on the job here. 
+
+### 2. OO Design
+
+This is where most candidates fail with OO. They can recite the textbook definitions, and then go on to 
+
+produce certifiably insane class designs for simple problems. For instance: 
+
+They may have Person multiple-inherit from Head, Body, Arm, and Leg.
+ They may have Car and Motorcycle inherit from Garage.
+ They may produce an elaborate class tree for Animals, and then declare an enum ("Lion = 1, Bear = 2", etc.) to represent the type of each animal.
+ They may have exactly one static instance of every class in their system. 
+
+(All these examples are from real candidates I've interviewed in the past 3 weeks.) 
+
+Candidates who've only studied the terminology without ever doing any OOP often don't really get it. When they go to produce classes or code, they don't understand the difference between a static member and an instance member, and they'll use them interchangeably. 
+
+Or they won't understand when to use a subclass versus an attribute or property, and they'll assert firmly that a car with a bumper sticker is a subclass of car. (Yep, 2 candidates have told me that in the last 2 weeks.) 
+
+Some don't understand that objects are supposed to know how to take care of themselves. They'll create a bunch of classes with nothing but data, getters, and setters (i.e., basically C structs), and some Manager classes that contain all the logic (i.e., basically C functions), and voila, they've implemented procedural programming perfectly using classes. 
+
+Or they won't understand the difference between a char*, an object, and an enum. Or they'll think polymorphism is the same as inheritance. Or they'll have any number of other fuzzy, weird conceptual errors, and their designs will be fuzzy and weird as well. 
+
+For the OO-design weeder question, have them describe: 
+
+1. What classes they would define.
+
+2. What methods go in each class (including signatures).
+
+3. What the class constructors are responsible for.
+
+4. What data structures the class will have to maintain.
+
+5. Whether any Design Patterns are applicable to this problem.
+
+Here are some examples: 
+
+1. Design a deck of cards that can be used for different card game applications. 
+
+   Likely classes: a Deck, a Card, a Hand, a Board, and possibly Rank and Suit. Drill down on who's responsible for creating new Decks, where they get shuffled, how you deal cards, etc. Do you need a different instance for every card in a casino in Vegas? 
+
+2. Model the Animal kingdom as a class system, for use in a Virtual Zoo program. 
+
+   Possible sub-issues: do they know the animal kingdom at all? (I.e. common sense.) What properties and methods do they immediately think are the most important? Do they use abstract classes and/or interfaces to represent shared stuff? How do they handle the multiple-inheritance problem posed by, say, a tomato (fruit or veggie?), a sponge (animal or plant?), or a mule (donkey or horse?) 
+
+3. Create a class design to represent a filesystem. 
+
+   Do they even know what a filesystem is, and what services it provides? Likely classes: Filesystem, Directory, File, Permission. What's their relationship? How do you differentiate between text and binary files, or do you need to? What about executable files? How do they model a Directory containing many files? Do they use a data structure for it? Which one, and what performance tradeoffs does it have? 
+
+4. Design an OO representation to model HTML. 
+
+   How do they represent tags and content? What about containment relationships? Bonus points if they know that this has already been done a bunch of times, e.g. with DOM. But they still have to describe it. 
+
+The following commonly-asked OO design interview questions are probably too involved to be good phone-screen weeders: 
+
+1. Design a parking garage.
+
+2. Design a bank of elevators in a skyscraper.
+3. Model the monorail system at Disney World.
+4. Design a restaurant-reservation system.
+
+5. Design a hotel room-reservation system.
+
+A good OO design question can test coding, design, domain knowledge, OO principles, and so on. A good weeder question should probably just target whether they know when to use subtypes, attributes, and containment. 
