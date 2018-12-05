@@ -415,6 +415,8 @@ public String formatRGB ( int r, int g, int b ) {
 
 > But for these five areas, I expect candidates to know them. It's not just a matter of being smart enough to learn them. There's a certain amount of common sense involved; I can't imagine coming to interview at Amazon and not having brushed up on OOP, for example. But these areas are also so fundamental that they serve as real indicators of how the person will do on the job here. 
 
+
+
 ### 2. OO Design
 
 This is where most candidates fail with OO. They can recite the textbook definitions, and then go on to 
@@ -452,19 +454,19 @@ Here are some examples:
 
 1. Design a deck of cards that can be used for different card game applications. 
 
-   Likely classes: a Deck, a Card, a Hand, a Board, and possibly Rank and Suit. Drill down on who's responsible for creating new Decks, where they get shuffled, how you deal cards, etc. Do you need a different instance for every card in a casino in Vegas? 
+   *Likely classes: a Deck, a Card, a Hand, a Board, and possibly Rank and Suit. Drill down on who's responsible for creating new Decks, where they get shuffled, how you deal cards, etc. Do you need a different instance for every card in a casino in Vegas?* 
 
 2. Model the Animal kingdom as a class system, for use in a Virtual Zoo program. 
 
-   Possible sub-issues: do they know the animal kingdom at all? (I.e. common sense.) What properties and methods do they immediately think are the most important? Do they use abstract classes and/or interfaces to represent shared stuff? How do they handle the multiple-inheritance problem posed by, say, a tomato (fruit or veggie?), a sponge (animal or plant?), or a mule (donkey or horse?) 
+   *Possible sub-issues: do they know the animal kingdom at all? (I.e. common sense.) What properties and methods do they immediately think are the most important? Do they use abstract classes and/or interfaces to represent shared stuff? How do they handle the multiple-inheritance problem posed by, say, a tomato (fruit or veggie?), a sponge (animal or plant?), or a mule (donkey or horse?)* 
 
 3. Create a class design to represent a filesystem. 
 
-   Do they even know what a filesystem is, and what services it provides? Likely classes: Filesystem, Directory, File, Permission. What's their relationship? How do you differentiate between text and binary files, or do you need to? What about executable files? How do they model a Directory containing many files? Do they use a data structure for it? Which one, and what performance tradeoffs does it have? 
+   *Do they even know what a filesystem is, and what services it provides? Likely classes: Filesystem, Directory, File, Permission. What's their relationship? How do you differentiate between text and binary files, or do you need to? What about executable files? How do they model a Directory containing many files? Do they use a data structure for it? Which one, and what performance tradeoffs does it have?* 
 
 4. Design an OO representation to model HTML. 
 
-   How do they represent tags and content? What about containment relationships? Bonus points if they know that this has already been done a bunch of times, e.g. with DOM. But they still have to describe it. 
+   *How do they represent tags and content? What about containment relationships? Bonus points if they know that this has already been done a bunch of times, e.g. with DOM. But they still have to describe it.* 
 
 The following commonly-asked OO design interview questions are probably too involved to be good phone-screen weeders: 
 
@@ -477,3 +479,178 @@ The following commonly-asked OO design interview questions are probably too invo
 5. Design a hotel room-reservation system.
 
 A good OO design question can test coding, design, domain knowledge, OO principles, and so on. A good weeder question should probably just target whether they know when to use subtypes, attributes, and containment. 
+
+
+
+## 三、脚本与正则表达式
+
+> Many C/C++/Java candidates, even some with 10+ years of experience, would happily spend a week writing a 2,500-line program to do something you could do in 30 seconds with a simple Unix command. 
+
+> I now pose the following question to ALL candidates, whether on the phone or in an interview, because it eliminates so many of them: 
+>
+> *Last year my team had to remove all the phone numbers from 50,000 Amazon web page templates, since many of the numbers were no longer in service, and we also wanted to route all customer contacts through a single page.* 
+>
+> *Let's say you're on my team, and we have to identify the pages having probable U.S. phone numbers in them. To simplify the problem slightly, assume we have 50,000 HTML files in a Unix directory tree, under a directory called "/website". We have 2 days to get a list of file paths to the editorial staff. You need to give me a list of the .html files in this directory tree that appear to contain phone numbers in the following two formats: (xxx) xxx-xxxx and xxx-xxx-xxxx.* 
+>
+> *How would you solve this problem? Keep in mind our team is on a short (2-day) timeline.* 
+
+
+
+Here are some facts for you to ponder: 
+
+1. Our Contact Reduction team really did have exactly this problem in 2003. This isn't a made-up example. 
+2. Someone on our team produced the list within an hour, and the list supported more than just the 2 formats above. 
+3. About 25% to 35% of all software development engineer candidates, independent of experience level, ***cannot solve this problem***, even given the entire interview hour and lots of hints. 
+
+I take as much time as necessary to explain the problem to candidates, to ensure that they understand it and can paraphrase the problem requirements correctly. 
+
+For the record, I'm not being tricky here. Once candidates start down the wrong path (i.e. writing a gigantic C++ program to open every file and parse character by character, using a home-grown state machine), I stop them, tell them this will take too long, and ask if there are any other possibilities. I ask if there are any tools or utilities that might be of use. I give them plenty of hints, and ultimately I tell them the answer. 
+
+Even after I tell them the answer, they often still don't get it. Here's one of many possible solutions to the problem: 
+
+```
+  grep -l -R --perl-regexp "\b(\(\d{3}\)\s*|\d{3}-)\d{3}-\d{4}\b" * > output.txt
+```
+
+But I don't even expect candidates to get that far, really. If they say, after hearing the question, "Um... grep?" then they're probably OK. I can ask them for the approximate syntax for the regular expression to use, and as long as they have a reasonable clue, I'm fine with it. Heck, if they can tell me where they'd look to find the syntax, I'm fine with it. 
+
+They can also use ***find***, or write a Perl script (or awk or bash or etc.). Anything that shows they have even the tiniest inkling of why Unix is Unix. 
+
+They can even write a Java or C++ program, provided they can actually write an entire working program in, say, half an hour or less, on the board, or at least convince me that they will get it working quickly. But I've only ever had that happen once; an insanely good C++ programmer burned through a 175-line C++ program on the whiteboard that more or less solved it. We made him an offer. But usually they throw in the towel when they find out they have to remember how to do file I/O, or traverse a directory tree. 
+
+For what it's worth, this failure mode is unique to Java and C/C++ programmers. Perl programmers laugh and solve it in 30 seconds or less. I have some easy questions that make Perl programmers cry, but this isn't one of them. 
+
+In my experience, a programmer who only knows one language (where C and C++ count as one language for this exercise) is usually completely lost in one of these Five Essential Areas. 
+
+You don't necessarily have to ask the HTML phone-number question. Another one I used to ask, one 
+
+that worked equally well, was: 
+
+***Let's say you're on my team, and I've decided I'm a real stickler for code formatting. But I've got peculiar tastes, and one day I decide I want to have all parentheses stand out very clearly in your code.*** 
+
+***So let's say you've got a set of source files in C, C++, or Java. Your choice. And I want you to modify them so that in each source file, every open- and close-paren has exactly one space character before and after it. If there is any other whitespace around the paren, it's collapsed into a single space character.*** 
+
+***For instance, this code:*** 
+
+```
+foo (bar ( new Point(x, graph.getY()) ));
+```
+
+***Would be modified to look like this:*** 
+
+```
+foo ( bar ( new Point ( x, graph.getY ( ) ) ) ) ;
+```
+
+***I tell you (as your manager) that I don't care how you solve this problem. You can take the code down to Kinko's Copies and manually cut and paste the characters with scissors if you like.*** 
+
+***How will you solve this problem?*** 
+
+Same thing, more or less. You'd do it with a Unix command like sed (using a regular expression), or do it in your editor using a regex, or write a quick Ruby script, whatever. I'd even accept having them use a source-code formatter, provided they can tell me in detail how to use it, during the interview (to a level of detail that convinces me they've used it before.) 
+
+There are all sorts of variations on this problem. Generally you want to come up with a real-life scenario that involves searching text files for patterns, and see if the candidate wants to solve it by writing a giant chunk of C++ or Java code. 
+
+
+
+## 四、数据结构
+
+SDE candidates need to demonstrate a basic understanding of the most common data structures, and of the fundamentals of "big-O" algorithmic complexity analysis.
+
+Here's what they need to know about big-O. They need to know that algorithms usually fall into the following performance classes: constant-time, logarithmic, linear, polynomial, exponential, and factorial.
+
+For the standard data structures in java.util, STL, or those built into a higher-level language, they need to know the big-O complexity for the operations on those data structures. *Example:* they should know that finding an element in a hashtable is usually constant-time, that finding an element in a balanced binary tree is order log(n), that finding an element in a linked list is order N, and that finding an element in a sorted array is order log(n). Similarly for insert/update/delete operations.
+
+And they should be able to explain why each operation falls into a particular complexity class. For instance: "Computing a hash value doesn't depend on the number of items in the hashtable." Or: "you have to search the entire linked list, even if it's sorted, to find an arbitrary element in it." No math needed, no proofs, just explanations.
+
+The (concrete) data structures they absolutely must understand are these:
+
+1) ***arrays*** - I'm talking about C-language and Java-language arrays: fixed-sized, indexed, contiguous structures whose elements are all of the same type, and whose elements can be accessed in constant time given their indices.
+
+2) ***vectors*** - also known as "growable arrays" or ArrayLists. Need to know that they're objects that are backed by a fixed-size array, and that they resize themselves as necessary.
+
+3) ***linked lists*** - lists made of nodes that contain a data item and a pointer/reference to the next (and possibly previous) node.
+
+4) ***hashtables*** - amortized constant-time access data structures that map keys to values, and are backed by a real array in memory, with some form of collision handling for values that hash to the same location.
+
+5) ***trees*** - data structures that consist of nodes with optional data elements and one or more child pointers/references, and possibly parent pointers, representing a heirarchical or ordered set of data elements.
+
+6) ***graphs*** - data structures that represent arbitrary relationships between members of any data set, represented as networks of nodes and edges.
+
+There are, to be sure, many other important data structures one should know about, but not knowing about the six listed above is inexcusable, and grounds for rejection in a phone screen.
+
+Candidates should be able to describe, for any of the data structures above:
+
+- what you use them for (real-life examples)
+- why you prefer them for those examples
+- the operations they typically provide (e.g. insert, delete, find)
+- the big-O performance of those operations (e.g. logarithmic, exponential)
+- how you traverse them to visit all their elements, and what order they're visited in
+- at least one typical implementation for the data structure
+
+Candidates should know the difference between an abstract data type such as a Stack, Map, List or Set, and a concrete data structure such as a singly-linked list or a hash table. For a given abstract data type (e.g. a Queue), they should be able to suggest at least two possible concrete implementations, and explain the performance trade-offs between the two implementations.
+
+Example weeder questions:
+
+***1) What are some really common data structures, e.g. in java.util?***
+
+***2) When would you use a linked list vs. a vector?***
+
+***3) Can you implement a Map with a tree? What about with a list?***
+
+***4) How do you print out the nodes of a tree in level-order (i.e. first level, then 2nd level, then 3rd level, etc.)***
+
+***5) What's the worst-case insertion performance of a hashtable? Of a binary tree?***
+
+***6) What are some options for implementing a priority queue?***
+
+And so on. Just a few quick questions should cover this area, provided you don't focus exclusively on linear ordered sequences (lists, arrays, vectors and the like).
+
+
+
+## 五、位与字节
+
+This area is fairly contentious, at least inasmuch as people who don't know this area claim you don't need to know it.
+
+(*Hint:* that's true for everything. Nobody likes to admit they don't know something you need to know. I'll start: I should know more about math; it's inexcusable. I'm doing all kinds of stuff the long, slow, dumb way because of my rusty math skills. But at least I admit it, and I've been studying my math books semi-regularly in an attempt to repair my skills.)
+
+Candidates *do* need to know about bits and bytes, at least at the level that I'm outlining here. Otherwise they're prone to having an integer-overflow error in their code that brings the website down and costs us millions. Or spending a week trying to decode a serialized object they're debugging. Or whatever. Computers don't have ten fingers; they have one. So people need to know this stuff.
+
+Candidates should know what bits and bytes are. They should be able to count in binary; e.g. they should be able to tell you what 2^5 or 2^10 is, in decimal. They shouldn't stare blankly at you when you ask with 2^16 is. It's a special number. They should know it.
+
+They should know at least the logical operations AND, OR, NOT, and XOR, and how to express them in their favorite/strongest programming language.
+
+They should understand the difference between a bitwise-AND and a logical-AND; similarly for the other operations.
+
+Candidates should know the probable sizes of the primitive data types for a standard 32-bit (e.g. Intel) architecture.
+
+If they're a Java programmer, they should know exactly what the primitive types are (byte, short, int, long, float, double, char, boolean) and, except for boolean, exactly how much space is allocated for them per the Java Language specification.
+
+Everyone should know the difference between signed and unsigned types, what it does to the range of representable values for that type, and whether their language supports signed vs. unsigned types.
+
+Candidates should know the bitwise and logical operators for their language, and should be able to use them for simple things like setting or testing a specific bit, or set of bits.
+
+Candidates should know about the bit-shift operators in their language, and should know why you would want to use them.
+
+A good weeder question for this area is:
+
+***Tell me how to test whether the high-order bit is set in a byte.***
+
+Another, more involved one is:
+
+**Write a function to count all the bits in an int value; e.g. the function with the signature *int countBits(int x)***
+
+Another good one is:
+
+**Describe a function that takes an int value, and returns true if the bit pattern of that int value is the same if you reverse it (i.e. it's a palindrome); i.e. *boolean isPalindrome(int x)***
+
+They don't have to code the last two, just convince you they'd take the right approach. Although if you have them code it correctly, it can count for your Coding weeder question too.
+
+C/C++ programmers should know about the *sizeof* operator and how (and why/when) to use it. Actually, come to think of it, everyone should know this.
+
+All programmers should be able to count in hexadecimal, and should be able to convert between the binary, octal, and hex representations of a number.
+
+
+
+## Spetial Fast-Track Version
+
+...
